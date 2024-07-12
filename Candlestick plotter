@@ -1,0 +1,21 @@
+import pandas as pd
+import mplfinance as mpf
+
+# Example data (replace this with your actual data)
+data = [
+    {'Date': '2023-01-01', 'Open': 100.00, 'High': 105.00, 'Low': 95.00, 'Close': 102.50, 'Volume': 100000},
+    {'Date': '2023-01-02', 'Open': 102.50, 'High': 110.00, 'Low': 101.00, 'Close': 109.50, 'Volume': 120000},
+    {'Date': '2023-01-03', 'Open': 110.00, 'High': 112.50, 'Low': 108.00, 'Close': 111.00, 'Volume': 90000},
+    # Add more data rows as needed
+]
+
+# Convert data to pandas DataFrame
+df = pd.DataFrame(data)
+df['Date'] = pd.to_datetime(df['Date'])
+df.set_index('Date', inplace=True)
+
+# Plot candlestick chart using mplfinance
+mpf.plot(df, type='candle', volume=True, title='Candlestick Chart', ylabel='Price')
+
+# Optionally, save the plot to a file
+# mpf.plot(df, type='candle', volume=True, title='Candlestick Chart', ylabel='Price', savefig='candlestick_chart.png')
